@@ -1,11 +1,16 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    owner_pure_phone = PhoneNumberField(
+        'Нормализованный номер владельца',
+        blank=True,
+        region='RU')
 
     description = models.TextField('Текст объявления', blank=True)
     price = models.IntegerField('Цена квартиры', db_index=True)
@@ -43,10 +48,10 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+
     liked_by = models.ManyToManyField(
         User,
         verbose_name='Кто лайкнул',
-        null=True,
         blank=True,
         related_name='liked_flats',
 
