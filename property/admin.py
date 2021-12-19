@@ -8,6 +8,7 @@ class FlatAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
     list_display = (
         'address',
+        'owner',
         'owners_phonenumber',
         'owner_pure_phone',
         'price',
