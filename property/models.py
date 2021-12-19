@@ -43,6 +43,14 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+    liked_by = models.ManyToManyField(
+        User,
+        verbose_name='Кто лайкнул',
+        null=True,
+        blank=True,
+        related_name='liked_flats',
+
+    )
     new_building = models.NullBooleanField('Новостройка', db_index=True)
 
     created_at = models.DateTimeField(
