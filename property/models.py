@@ -61,7 +61,7 @@ class Flat(models.Model):
 
 
 class Claim(models.Model):
-    name = models.ForeignKey(
+    owner = models.ForeignKey(
         User,
         null=True,
         verbose_name='Кто пожаловался',

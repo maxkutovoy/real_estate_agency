@@ -26,7 +26,7 @@ class FlatAdmin(admin.ModelAdmin):
 
 
 class ClaimAdmin(admin.ModelAdmin):
-    raw_id_fields = ('name', 'address')
+    raw_id_fields = ('owner', 'address')
 
 
 class OwnerAdmin(admin.ModelAdmin):
